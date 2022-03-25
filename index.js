@@ -15,9 +15,10 @@ pokemon.addEventListener("click",getPokeApi);
 async function getBoredApi() {
     let items = await fetch("http://www.boredapi.com/api/activity?type=social") 
     .then((data) => data.json())
-        .then((items) =>  console.log(items));   
+        .then((items) =>  console.log(items))  
     if (participants = 1) { console.log("Bare 1"); }
     else { console.log("Flere"); }
+    
 }
 
 
@@ -31,6 +32,28 @@ async function getPokeApi() {
 
 }
 
+class Pokemon {
+    constructor(name, height, id, weight) {
+        this.name = name;
+        this.height = height;
+        this.id = id;
+        this.weight = weight;
+    }
 
+}
+
+let pokemonArray = [];
+
+async function getPokeApis(url) {
+    let pokemon2 = await fetch(url);
+    let jsonDAta = await pokemon2.json();
+    jsonDAta.forEach(element => {
+        pokemonArray.push(element)
+        pokemonClass = new Pokemon(element.name, element.height, element.id, element.weight);
+    });
+}
+
+getPokeApis("https://pokeapi.co/api/v2/pokemon/100")
+    .then(() => { alert(`Min sjefs favorittpokemon er${name}. Den er ${height}, veier ${weight} og har id ${id}`); })
 
 
