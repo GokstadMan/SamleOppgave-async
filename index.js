@@ -21,39 +21,30 @@ async function getBoredApi() {
     
 }
 
-
-
 //function API 2
 async function getPokeApi() {
     let pokemon = await fetch("https://pokeapi.co/api/v2/pokemon/100")
     .then((data) => data.json())
-    .then((items) => console.log(items)); 
-    
+    .then((items) => console.log(items));
 
-}
-
-class Pokemon {
-    constructor(name, height, id, weight) {
-        this.name = name;
-        this.height = height;
-        this.id = id;
-        this.weight = weight;
+    class Pokemon {
+        constructor(name, height, id, weight) {
+            this.name = name;
+            this.height = height;
+            this.id = id;
+            this.weight = weight;
+            
+        }
     }
-
+   
+    let volbro = new Pokemon("voltorb", 5, 100, 104);
+    alert(`Sjefens favorittPokemon er ${volbro.name}. Den har id: ${volbro.id} og høyde: ${volbro.height} og veier ${volbro.weight}`);
+  
 }
 
-let pokemonArray = [];
 
-async function getPokeApis(url) {
-    let pokemon2 = await fetch(url);
-    let jsonDAta = await pokemon2.json();
-    jsonDAta.forEach(element => {
-        pokemonArray.push(element)
-        pokemonClass = new Pokemon(element.name, element.height, element.id, element.weight);
-    });
-}
 
-getPokeApis("https://pokeapi.co/api/v2/pokemon/100")
-    .then(() => { alert(`Min sjefs favorittpokemon er${name}. Den er ${height}, veier ${weight} og har id ${id}`); })
+
+
 
 
